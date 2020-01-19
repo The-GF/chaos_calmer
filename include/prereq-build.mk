@@ -141,11 +141,11 @@ $(eval $(call SetupHostCommand,python,Please install Python 2.x, \
 	python2 -V 2>&1 | grep Python, \
 	python -V 2>&1 | grep Python))
 
-$(eval $(call SetupHostCommand,svn,Please install the Subversion client, \
-	svn --version | grep Subversion))
+# $(eval $(call SetupHostCommand,svn,Please install the Subversion client, \
+# 	svn --version | grep Subversion))
 
-$(eval $(call SetupHostCommand,git,Please install Git (git-core) >= 1.6.5, \
-	git clone 2>&1 | grep -- --recursive))
+$(eval $(call SetupHostCommand,git,Please install Git (git-core) >= 1.7.12.2, \
+	git --exec-path | xargs -I % -- grep -q -- --recursive %/git-submodule))
 
 $(eval $(call SetupHostCommand,file,Please install the 'file' package, \
 	file --version 2>&1 | grep file))
